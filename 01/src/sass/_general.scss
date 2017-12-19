@@ -1,0 +1,29 @@
+html {
+    font-size: $base_font_size;
+    font-family: $base_font_family;
+}
+
+.body {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+    width: $content_width;
+    margin: 0 auto;
+}
+
+.main {
+    flex: 1;
+    align-items: center;
+    justify-content: space-around;
+    background-color: gray;
+}
+
+.container-flex {
+    display: flex;
+}

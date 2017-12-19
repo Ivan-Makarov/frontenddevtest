@@ -1,0 +1,247 @@
+$slide_bg_img: '/img/bg.png';
+$slide_heading_color: $blue;
+$slide_heading_border_color: $orange;
+$slide_heading_border_width: 15px;
+$slide_heading_mr: 77px;
+
+.slide {
+    position: relative;
+    width: 1024px;
+    height: 768px;
+    overflow: hidden;
+    padding-left: 57px;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url($slide_bg_img);
+    z-index: 0;
+    &::after {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        bottom: calc(100% - 45px);
+        left: calc(100% - #{$slide_heading_mr});
+        display: block;
+        height: 100px;
+        width: 8px;
+        background-color: $slide_heading_border_color;
+        transform-origin: 0 100%;
+        transform: skewX(-45deg);
+    }
+    &__heading {
+        position: relative;
+        margin: 34px $slide_heading_mr 22px 0;
+        padding: 0 160px 20px 15px;
+        font-size: 32px;
+        color: $slide_heading_color;
+        border-bottom: $slide_heading_border_width solid $slide_heading_border_color;
+        &::before {
+            content: '';
+            box-sizing: border-box;
+            position: absolute;
+            bottom: -$slide_heading_border_width;
+            right: 100%;
+            display: block;
+            height: $slide_heading_border_width;
+            width: 100px;
+            background-color: $slide_heading_border_color;
+            transform-origin: 100% 0;
+            transform: skewY(-45deg);
+        }
+        &::after {
+            content: '';
+            box-sizing: border-box;
+            position: absolute;
+            top: calc(100% + #{$slide_heading_border_width} + 5px);
+            left: 2px;
+            display: block;
+            height: 150px;
+            width: 8px;
+            background-color: $slide_heading_border_color;
+            transform-origin: 0 0;
+            transform: skewX(-45deg);
+        }
+    }
+}
+
+$big_circle_col: $pale_orange;
+$medium_circle_col: $bright_orange;
+$small_circle_col: $yuck_color;
+
+.diagram {
+    position: relative;
+    width: 318px;
+    height: 318px;
+    margin-left: 140px;
+    margin-bottom: 5px;
+    &__big-circle {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: $big_circle_col;
+        .circle-value {
+            font-size: 60px;
+            position: absolute;
+            bottom: 55px;
+            right: 80px;
+        }
+    }
+    &__medium-circle {
+        position: absolute;
+        justify-content: space-around;
+        align-items: center;
+        top: 30px;
+        left: 8px;
+        width: 202px;
+        height: 202px;
+        border-radius: 50%;
+        background-color: $medium_circle_col;
+        .circle-value {
+            font-size: 53px;
+        }
+    }
+    &__small-circle {
+        position: absolute;
+        justify-content: space-around;
+        align-items: center;
+        top: 50px;
+        right: 10px;
+        width: 141px;
+        height: 141px;
+        border-radius: 50%;
+        background-color: $small_circle_col;
+        .circle-value {
+            font-size: 40px;
+        }
+    }
+    .circle-value {
+        color: white;
+    }
+}
+
+$slider_heading_col: $orange;
+
+.slider-box {
+    margin-bottom: 51px;
+    padding-left: 15px;
+    align-items: flex-end;
+    &__heading {
+        width: 95px;
+        margin-right: 15px;
+        font-size: 24px;
+        color: $slider_heading_col;
+        line-height: 1;
+    }
+}
+
+.slider {
+    $slider_bg_color: $light_blue;
+    $slider_height: 17px;
+    $slider_width: 355px;
+    position: relative;
+    top: -4px;
+    height: $slider_height;
+    width: $slider_width;
+    background-color: $slider_bg_color;
+    &::before {
+        display: block;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: $slider_height $slider_height 0 0;
+        border-color: $orange transparent transparent transparent;
+        z-index: 10;
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 $slider_height $slider_height;
+        border-color: transparent transparent $darker_blue transparent;
+
+    }
+
+    $marker_offset_right: 37px;
+    $marker_width: 16px;
+
+    @mixin slider($fill, $fill_color) {
+        $slider_fill: $fill;
+        $marker_position: $slider_fill * $slider_width - $marker_offset_right - $marker_width;
+
+        &__fill {
+            background-color:  $fill_color;
+            width: $marker_position;
+        }
+        &__marker {
+            left: $marker_position;
+            &::before {
+                background-color: darken($fill_color, 10%);
+            }
+        }
+    }
+
+    &_1 {
+        @include slider(1, $pale_orange)
+    }
+    &_2 {
+        @include slider(0.58, $bright_orange)
+    }
+    &_3 {
+        @include slider(0.35, $yuck_color)
+    }
+    &__fill {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+    }
+    $marker_height: 31px;
+    &__marker {
+        position: absolute;
+        top: -($marker_height - $slider_height)/2;
+        width: $marker_width;
+        height: $marker_height;
+        background-color: $orange;
+        box-shadow: 6px 7px $light_blue;
+        &::before {
+            position: absolute;
+            content: '';
+            top: ($marker_height - $slider_height)/2;
+            left: $marker_width + 7px;
+            width: 14px;
+            height: $slider_height;
+            transform: skewX(-45deg);
+            transform-origin: (0 100%);
+            z-index: 1;
+            box-shadow: 0px 14px $light_blue;
+        }
+        &::after {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: $marker_width;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: $marker_height $marker_height 0 0;
+            border-color: $orange transparent transparent transparent;
+            z-index: 10;
+        }
+    }
+    &__marker-value {
+        position: absolute;
+        bottom: $marker_height;
+        left: $marker_width;
+        font-size: 28px;
+        color: $orange;
+    }
+}
