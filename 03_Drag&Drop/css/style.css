@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'Pragmatica Cyrillic';
   src: url('fonts/PragmaticaCyrillic.eot?#iefix') format('embedded-opentype'),
-  url('fonts/PragmaticaCyrillic.woff') format('woff'), 
-  url('fonts/PragmaticaCyrillic.ttf')  format('truetype'), 
+  url('fonts/PragmaticaCyrillic.woff') format('woff'),
+  url('fonts/PragmaticaCyrillic.ttf')  format('truetype'),
   url('fonts/PragmaticaCyrillic.svg#PragmaticaCyrillic') format('svg');
   font-weight: normal;
   font-style: normal;
@@ -11,9 +11,9 @@
 
 @font-face {
   font-family: 'Pragmatica Cyrillic';
-  src: url('fonts/PragmaticaBoldCyrillic.eot?#iefix') format('embedded-opentype'),  
-  url('fonts/PragmaticaBoldCyrillic.woff') format('woff'), 
-  url('fonts/PragmaticaBoldCyrillic.ttf')  format('truetype'), 
+  src: url('fonts/PragmaticaBoldCyrillic.eot?#iefix') format('embedded-opentype'),
+  url('fonts/PragmaticaBoldCyrillic.woff') format('woff'),
+  url('fonts/PragmaticaBoldCyrillic.ttf')  format('truetype'),
   url('fonts/PragmaticaBoldCyrillic.svg#PragmaticaBoldCyrillic') format('svg');
   font-weight: bold;
   font-style: normal;
@@ -129,6 +129,7 @@ body{
         }
 
         .img8 {
+            position: absolute;
             width: 315px;
             left: 653px;
             top: 188px;
@@ -150,7 +151,3 @@ body{
   height: 64px;
   margin-bottom: 70px;
 }
-
-
-
-
