@@ -1,0 +1,15 @@
+@mixin slider($fill, $fill_color, $slider_width, $marker_offset, $marker_width) {
+    $slider_fill: $fill;
+    $marker_position: $slider_fill * $slider_width - $marker_offset - $marker_width;
+
+    &__fill {
+        background-color:  $fill_color;
+        width: $marker_position;
+    }
+    &__marker {
+        left: $marker_position;
+        &::before {
+            background-color: darken($fill_color, 10%);
+        }
+    }
+}

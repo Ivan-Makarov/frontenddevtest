@@ -173,30 +173,14 @@ $slider_heading_col: $orange;
     $marker_offset_right: 37px;
     $marker_width: 16px;
 
-    @mixin slider($fill, $fill_color) {
-        $slider_fill: $fill;
-        $marker_position: $slider_fill * $slider_width - $marker_offset_right - $marker_width;
-
-        &__fill {
-            background-color:  $fill_color;
-            width: $marker_position;
-        }
-        &__marker {
-            left: $marker_position;
-            &::before {
-                background-color: darken($fill_color, 10%);
-            }
-        }
-    }
-
     &_1 {
-        @include slider(1, $pale_orange)
+        @include slider(1, $pale_orange, $slider_width, $marker_offset_right, $marker_width)
     }
     &_2 {
-        @include slider(0.58, $bright_orange)
+        @include slider(0.58, $bright_orange, $slider_width, $marker_offset_right, $marker_width)
     }
     &_3 {
-        @include slider(0.35, $yuck_color)
+        @include slider(0.35, $yuck_color, $slider_width, $marker_offset_right, $marker_width)
     }
     &__fill {
         position: absolute;
