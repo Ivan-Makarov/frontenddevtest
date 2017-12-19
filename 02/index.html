@@ -7,20 +7,43 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title></title>
-    <link href="css/main.css" rel="stylesheet">>
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/animations.css" rel="stylesheet">
 </head>
 <body>
     <div id="background">
 
     </div>
+    <div class="workspace">
+        <div class="css">
+            <div id="css__items" class="items css__items container-flex">
+                <div class="item item_1">1</div>
+                <div class="item item_2">2</div>
+                <div class="item item_3">3</div>
+                <div class="item item_4">4</div>
+            </div>
+            <div class="controls">
+                <a href="#css__items" class="btn css__start">CSS start</a>
+                <a href="/" class="btn">Reset</a>
+            </div>
+        </div>
+        <div class="js">
+            <div id="js__items" class="items js__items container-flex">
+                <div class="item item_1">1</div>
+                <div class="item item_2">2</div>
+                <div class="item item_3">3</div>
+                <div class="item item_4">4</div>
+            </div>
+            <div class="controls">
+                <button class="btn js__start">JS start</button>
+                <button class="btn js__reset">Reset</button>
+            </div>
+        </div>
+    </div>
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/jquery-ui-1.10.4.min.js"></script>
     <script src="js/jquery.ui.touch-punch.min.js"></script>
-    <script>
-        $(function () {
-           
-        });
-    </script>
+    <script src="js/animations.js"></script>
 </body>
 
 </html>
