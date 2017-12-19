@@ -12,6 +12,34 @@ function activateAnimations() {
     $start.click(animateItems);
     $reset.click(reset);
 
+    function animateItems(e) {
+        e.preventDefault();
+
+        $start.prop('disabled', 'true');
+        $reset.prop('disabled', 'true');
+
+        opacity($item_1, 5);
+
+        animations.forEach(animation => {
+            runAnimationSequence(animation.item, animation.options)
+        })
+
+        const animationTotalDuration = animations.reduce((longest, animation) => {
+            const animationDuration = animation.options.reduce((total, current) => {
+                total += current.parameters.duration;
+                return total
+            }, 0)
+
+            longest = animationDuration > longest ? animationDuration : longest;
+            return longest
+        }, 0)
+
+        setTimeout(() => {
+            $start.removeAttr('disabled');
+            $reset.removeAttr('disabled');
+        }, animationTotalDuration * 1000);
+    }
+
     function reset() {
         $items.each((i, el) => {
             $(el).css({
@@ -19,89 +47,6 @@ function activateAnimations() {
                 'transition-duration': '2s'
             })
         })
-    }
-
-    function animateItems(e) {
-        e.preventDefault();
-
-        opacity($item_1, 5);
-
-        runAnimationSequence($item_2, [
-            {
-                animation: angle,
-                parameters: {
-                    to: -45,
-                    duration: 2.5
-                }
-            },
-            {
-                animation: angle,
-                parameters: {
-                    to: 45,
-                    duration: 2.5
-                }
-            }
-        ])
-
-        runAnimationSequence($item_3, [
-            {
-                animation: size,
-                parameters: {
-                    to: 0.5,
-                    duration: 2.5
-                }
-            },
-            {
-                animation: size,
-                parameters: {
-                    to: 1.5,
-                    duration: 2.5
-                }
-            }
-        ])
-
-        runAnimationSequence($item_4, [
-            {
-                animation: position,
-                parameters: {
-                    x: -20,
-                    y: -20,
-                    duration: 1
-                }
-            },
-            {
-                animation: position,
-                parameters: {
-                    x: 20,
-                    y: -20,
-                    duration: 1
-                }
-            },
-            {
-                animation: position,
-                parameters: {
-                    x: 20,
-                    y: 20,
-                    duration: 1
-                }
-            },
-            {
-                animation: position,
-                parameters: {
-                    x: -20,
-                    y: 20,
-                    duration: 1
-                }
-            },
-            {
-                animation: position,
-                parameters: {
-                    x: 0,
-                    y: 0,
-                    duration: 1
-                }
-            }
-        ])
     }
 
     function opacity(item, duration) {
@@ -141,6 +86,92 @@ function activateAnimations() {
             }, durationCounter);
         }
     }
+
+    const animations = [
+        {
+            item: $item_2,
+            options: [
+                {
+                    animation: angle,
+                    parameters: {
+                        to: -45,
+                        duration: 2.5
+                    }
+                },
+                {
+                    animation: angle,
+                    parameters: {
+                        to: 45,
+                        duration: 2.5
+                    }
+                }
+            ]
+        },
+        {
+            item: $item_3,
+            options: [
+                {
+                    animation: size,
+                    parameters: {
+                        to: 0.5,
+                        duration: 2.5
+                    }
+                },
+                {
+                    animation: size,
+                    parameters: {
+                        to: 1.5,
+                        duration: 2.5
+                    }
+                }
+            ]
+        },
+        {
+            item: $item_4,
+            options: [
+                {
+                    animation: position,
+                    parameters: {
+                        x: -20,
+                        y: -20,
+                        duration: 1
+                    }
+                },
+                {
+                    animation: position,
+                    parameters: {
+                        x: 20,
+                        y: -20,
+                        duration: 1
+                    }
+                },
+                {
+                    animation: position,
+                    parameters: {
+                        x: 20,
+                        y: 20,
+                        duration: 1
+                    }
+                },
+                {
+                    animation: position,
+                    parameters: {
+                        x: -20,
+                        y: 20,
+                        duration: 1
+                    }
+                },
+                {
+                    animation: position,
+                    parameters: {
+                        x: 0,
+                        y: 0,
+                        duration: 1
+                    }
+                }
+            ]
+        }
+    ]
 }
 
 document.addEventListener('DOMContentLoaded', activateAnimations);
