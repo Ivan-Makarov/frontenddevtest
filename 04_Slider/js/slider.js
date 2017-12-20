@@ -35,7 +35,7 @@ function launchSlider() {
 
             moved.style.left = markerPosition + 'px';
             showIndicators(markerPosition);
-            showValue(markerPosition);
+            showValue(markerPosition, 100, '%');
         }
     });
 
@@ -57,10 +57,10 @@ function launchSlider() {
         })
     }
 
-    function showValue(position) {
-        const valueUnit = (sliderWidth - markerOffset) / 100;
+    function showValue(position, units, unit) {
+        const valueUnit = (sliderWidth - markerOffset) / units;
         const value = parseInt(position / valueUnit);
-        valueDisplay.textContent = value > 0 ? value + '%' : value;
+        valueDisplay.textContent = value > 0 ? value + unit : value;
     }
 }
 
